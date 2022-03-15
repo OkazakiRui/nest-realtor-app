@@ -31,5 +31,6 @@ export class AuthService {
         user_type: UserType.BUYER,
       },
     });
+    return user;
   }
 }
