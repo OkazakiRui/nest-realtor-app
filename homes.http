@@ -1,0 +1,14 @@
+### 全件取得
+GET http://localhost/home
+
+### 1件取得
+GET http://localhost/home/1
+
+### 登録
+GET http://localhost/home/1
+
+### 1件取得
+GET http://localhost/home/1
+
+### 1件取得
+GET http://localhost/home/1
