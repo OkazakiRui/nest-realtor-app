@@ -36,21 +36,21 @@ enum PropertyType {
 }
 
 model Home {
-  id                  Int       @id @default(autoincrement())
+  id                  Int          @id @default(autoincrement())
   address             String
   number_of_bedrooms  Int
   number_of_bathrooms Float
   city                String
-  listed_date         DateTime  @default(now())
+  listed_date         DateTime     @default(now())
   price               Float
   land_size           Float
-  property_type       String
-  created_at          DateTime  @default(now())
-  updated_at          DateTime  @updatedAt
+  propertyType        PropertyType
+  created_at          DateTime     @default(now())
+  updated_at          DateTime     @updatedAt
   images              Image[]
   realtor_id          Int
-  realtor             User      @relation(fields: [realtor_id], references: [id])
-  message             Message[]
+  realtor             User         @relation(fields: [realtor_id], references: [id])
+  messages            Message[]
 }
 
 model Image {
@@ -68,7 +68,7 @@ model Message {
   home_id    Int
   home       Home   @relation(fields: [home_id], references: [id])
   realtor_id Int
-  realtor    User   @relation("realtor_messages", references: [id], fields: [realtor_id])
+  realtor    User   @relation("buyer_messages", fields: [realtor_id], references: [id])
   buyer_id   Int
-  buyer      User   @relation("buyer_messages", references: [id], fields: [buyer_id])
+  buyer      User   @relation("realtor_messages", fields: [buyer_id], references: [id])
 }
