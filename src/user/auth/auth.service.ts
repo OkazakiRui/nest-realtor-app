@@ -20,6 +20,13 @@ type SigninParams = {
 export class AuthService {
   constructor(private readonly prismaService: PrismaService) {}
 
+  /**
+   * Tokenを作成し返却する
+   * @date 2022-03-15
+   * @param {string} name
+   * @param {number} id
+   * @returns {string} JSON_WEB_TOKEN
+   */
   private generateJWT(name: string, id: number) {
     return jwt.sign(
       {
@@ -52,9 +59,7 @@ export class AuthService {
       },
     });
 
-    const token = await this.generateJWT(name, user.id);
-
-    return token;
+    return this.generateJWT(name, user.id);
   }
 
   async signin({ email, password }: SigninParams) {
@@ -76,7 +81,6 @@ export class AuthService {
         400,
       );
 
-    const token = await this.generateJWT(user.name, user.id);
-    return token;
+    return this.generateJWT(user.name, user.id);
   }
 }
