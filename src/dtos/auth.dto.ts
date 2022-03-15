@@ -11,7 +11,9 @@ export class SignupDto {
   @IsNotEmpty()
   name: string;
 
-  @Matches(/^0\d{2,3}-\d{1,4}-\d{4}$/)
+  @Matches(/^0\d{2,3}-\d{1,4}-\d{4}$/, {
+    message: '正しい電話番号を入力してください',
+  })
   phone: string;
 
   @IsEmail()
