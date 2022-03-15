@@ -1,11 +1,12 @@
-POST http://localhost/auth/signup
+POST http://localhost/auth/signup/REALTOR
 content-type: application/json
 
 {
   "name": "hoge",
   "phone": "000-0000-0000",
-  "email": "rui@hoge.com",
-  "password": "123456"
+  "email": "rui12@hoge.com",
+  "password": "123456",
+  "productKey": "$2a$10$aOofvGcdrJDGBRI.mH63EeSnnof4jpE3F142.1fpwgllTCw.UMd9C"
 }
 
 ###
@@ -18,7 +19,15 @@ content-type: application/json
   "password": "123456"
 }
 
+###
 
+POST http://localhost/auth/key
+content-type: application/json
+
+{
+  "email": "rui12@hoge.com",
+  "userType": "REALTOR"
+}
 
 
 
