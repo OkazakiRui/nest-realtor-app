@@ -1,4 +1,4 @@
-import { PropertyType } from '.prisma/client';
+import { PropertyType } from '@prisma/client';
 import { Exclude, Expose } from 'class-transformer';
 
 export class HomeResponseDto {

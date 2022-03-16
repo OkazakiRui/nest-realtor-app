@@ -1,6 +1,9 @@
 ### 全件取得
 GET http://localhost/home
 
+### 条件付き検索
+GET http://localhost/home?city=沖縄県&minPrice=10000&maxPrice=100000&propertyType=RESIDENTIAL
+
 ### 1件取得
 GET http://localhost/home/1
 
