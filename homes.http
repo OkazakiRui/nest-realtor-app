@@ -36,3 +36,6 @@ content-type: application/json
 {
   "address": "piyopiyo 1321"
 }
+
+### 削除
+DELETE http://localhost/home/6
