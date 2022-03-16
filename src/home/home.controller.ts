@@ -1,5 +1,6 @@
-import { HomeResponseDto } from './dto/home.dto';
+import { HomeResponseDto, CreateHomeDto } from './dto/home.dto';
 import {
+  Body,
   Controller,
   Delete,
   Get,
@@ -47,7 +48,7 @@ export class HomeController {
   }
 
   @Post()
-  createHome() {
+  createHome(@Body() body: CreateHomeDto) {
     return {};
   }
 

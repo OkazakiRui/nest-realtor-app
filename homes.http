@@ -8,10 +8,5 @@ GET http://localhost/home?city=沖縄県&minPrice=1000&maxPrice=100000&propertyT
 GET http://localhost/home/1
 
 ### 登録
-GET http://localhost/home/1
-
-### 1件取得
-GET http://localhost/home/1
-
-### 1件取得
-GET http://localhost/home/1
+POST http://localhost/home
+content-type: application/json
