@@ -10,3 +10,21 @@ GET http://localhost/home/1
 ### 登録
 POST http://localhost/home
 content-type: application/json
+
+{
+  "address": "piyopiyo 132",
+  "numberOfBedrooms": 4,
+  "numberOfBathrooms": 1,
+  "city": "大阪府",
+  "price": 123456,
+  "landSize": 1200,
+  "propertyType": "RESIDENTIAL",
+  "images": [
+    {
+      "url": "post image1"
+    },
+    {
+      "url": "post image2"
+    }
+  ]
+}

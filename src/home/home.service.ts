@@ -12,6 +12,17 @@ type GetHomesParam = {
   property_type: PropertyType;
 };
 
+type CreateHomeParams = {
+  address: string;
+  numberOfBedrooms: number;
+  numberOfBathrooms: number;
+  city: string;
+  price: number;
+  landSize: number;
+  propertyType: PropertyType;
+  images: { url: string }[];
+};
+
 @Injectable()
 export class HomeService {
   constructor(private readonly prismaService: PrismaService) {}
@@ -82,5 +93,37 @@ export class HomeService {
     };
 
     return new HomeResponseDto(fetchHome);
+  }
+
+  async createHome({
+    address,
+    numberOfBedrooms,
+    numberOfBathrooms,
+    city,
+    price,
+    landSize,
+    propertyType,
+    images,
+  }: CreateHomeParams) {
+    const home = await this.prismaService.home.create({
+      data: {
+        address,
+        number_of_bedrooms: numberOfBedrooms,
+        number_of_bathrooms: numberOfBathrooms,
+        city,
+        price,
+        land_size: landSize,
+        property_type: propertyType,
+        realtor_id: 1,
+      },
+    });
+
+    const homeImages = images.map((image) => {
+      return { ...image, home_id: home.id };
+    });
+
+    await this.prismaService.image.createMany({ data: homeImages });
+
+    return new HomeResponseDto(home);
   }
 }
