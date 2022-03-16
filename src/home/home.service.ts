@@ -47,4 +47,40 @@ export class HomeService {
       return new HomeResponseDto(fetchHome);
     });
   }
+
+  async getHomeById(id: number): Promise<HomeResponseDto> {
+    const home = await this.prismaService.home.findUnique({
+      where: { id },
+      select: {
+        id: true,
+        address: true,
+        city: true,
+        price: true,
+        property_type: true,
+        number_of_bedrooms: true,
+        number_of_bathrooms: true,
+        images: {
+          select: {
+            url: true,
+          },
+        },
+        realtor: {
+          select: {
+            name: true,
+            email: true,
+            phone: true,
+          },
+        },
+      },
+    });
+
+    if (!home) throw new NotFoundException();
+
+    const fetchHome = {
+      ...home,
+      images: home.images.map((image) => image.url),
+    };
+
+    return new HomeResponseDto(fetchHome);
+  }
 }
