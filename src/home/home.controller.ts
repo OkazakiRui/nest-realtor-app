@@ -14,14 +14,22 @@ export class HomeController {
     @Query('maxPrice') maxPrice?: number,
     @Query('propertyType') propertyType?: PropertyType,
   ): Promise<HomeResponseDto[]> {
-    console.log({
-      city,
-      minPrice,
-      maxPrice,
-      propertyType,
-    });
+    // minPrice, maxPrice どちらかが存在する場合
+    const price =
+      minPrice || maxPrice
+        ? {
+            ...(minPrice && { gte: minPrice }),
+            ...(maxPrice && { lte: maxPrice }),
+          }
+        : undefined;
 
-    return this.homeService.getHomes();
+    const filter = {
+      ...(city && { city }),
+      ...(price && { price }),
+      ...(propertyType && { property_type: propertyType }),
+    };
+
+    return this.homeService.getHomes(filter);
   }
 
   @Get('/:id')
