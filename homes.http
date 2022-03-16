@@ -28,3 +28,11 @@ content-type: application/json
     }
   ]
 }
+
+### 更新
+PUT http://localhost/home/6
+content-type: application/json
+
+{
+  "address": "piyopiyo 1321"
+}

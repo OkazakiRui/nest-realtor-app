@@ -1,4 +1,4 @@
-import { HomeResponseDto, CreateHomeDto } from './dto/home.dto';
+import { HomeResponseDto, CreateHomeDto, UpdateHomeDto } from './dto/home.dto';
 import {
   Body,
   Controller,
@@ -53,8 +53,11 @@ export class HomeController {
   }
 
   @Put('/:id')
-  updateHome() {
-    return {};
+  updateHome(
+    @Param('id', ParseIntPipe) id: number,
+    @Body() body: UpdateHomeDto,
+  ) {
+    return this.homeService.updateHomeById(id, body);
   }
 
   @Delete('/:id')
