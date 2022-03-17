@@ -105,16 +105,19 @@ export class HomeService {
     return new HomeResponseDto(fetchHome);
   }
 
-  async createHome({
-    address,
-    numberOfBedrooms,
-    numberOfBathrooms,
-    city,
-    price,
-    landSize,
-    propertyType,
-    images,
-  }: CreateHomeParams) {
+  async createHome(
+    {
+      address,
+      numberOfBedrooms,
+      numberOfBathrooms,
+      city,
+      price,
+      landSize,
+      propertyType,
+      images,
+    }: CreateHomeParams,
+    userId: number,
+  ) {
     const home = await this.prismaService.home.create({
       data: {
         address,
@@ -124,7 +127,7 @@ export class HomeService {
         price,
         land_size: landSize,
         property_type: propertyType,
-        realtor_id: 1,
+        realtor_id: userId,
       },
     });
 
