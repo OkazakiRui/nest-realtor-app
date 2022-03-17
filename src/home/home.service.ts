@@ -37,6 +37,12 @@ type UpdateHomeParams = {
 export class HomeService {
   constructor(private readonly prismaService: PrismaService) {}
 
+  /**
+   * 全物件を取得します。filterObjectを渡すと絞り込みが出来ます
+   * @date 2022-03-17
+   * @param {GetHomesParam} filter
+   * @returns {object[]} homeData[]
+   */
   async getHomes(filter: GetHomesParam): Promise<HomeResponseDto[]> {
     const homes = await this.prismaService.home.findMany({
       select: {
@@ -69,6 +75,12 @@ export class HomeService {
     });
   }
 
+  /**
+   * homeIdから物件の詳細情報を取得します
+   * @date 2022-03-17
+   * @param {number} homeId
+   * @returns {object} homeData
+   */
   async getHomeById(id: number): Promise<HomeResponseDto> {
     const home = await this.prismaService.home.findUnique({
       where: { id },
@@ -105,6 +117,13 @@ export class HomeService {
     return new HomeResponseDto(fetchHome);
   }
 
+  /**
+   * userId名義で物件を作成します
+   * @date 2022-03-17
+   * @param {CreateHomeParams} :
+   * @param {number} userId
+   * @returns {object} createdHomeData
+   */
   async createHome(
     {
       address,
@@ -140,6 +159,13 @@ export class HomeService {
     return new HomeResponseDto(home);
   }
 
+  /**
+   * homeIdから物件を取得した物件を更新します
+   * @date 2022-03-17
+   * @param {number} homeId
+   * @param {UpdateHomeParams} updateHomeParams
+   * @returns {object} updatedHomeData
+   */
   async updateHomeById(id: number, data: UpdateHomeParams) {
     const home = await this.prismaService.home.findUnique({ where: { id } });
 
@@ -153,11 +179,23 @@ export class HomeService {
     return new HomeResponseDto(updatedHome);
   }
 
+  /**
+   * homeIdの物件を削除する
+   * @date 2022-03-17
+   * @param {number} homeId
+   * @returns {void}
+   */
   async deleteHomeById(id: number) {
     await this.prismaService.image.deleteMany({ where: { home_id: id } });
     await this.prismaService.home.delete({ where: { id } });
   }
 
+  /**
+   * homeIdからrealtorのデータを取得する
+   * @date 2022-03-17
+   * @param {number} homeId
+   * @returns {object} realtorData
+   */
   async getRealtorByHomeId(id: number) {
     // homeに結びつくrealtorからユーザー情報を取得する
     const home = await this.prismaService.home.findUnique({

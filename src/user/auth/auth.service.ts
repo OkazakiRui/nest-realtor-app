@@ -40,6 +40,13 @@ export class AuthService {
     );
   }
 
+  /**
+   * userType と SignupParams を受け取りユーザーを作成します
+   * @date 2022-03-17
+   * @param {SignupParams} SignupParams
+   * @param {UserType} userType
+   * @returns {string} JSON_WEB_TOKEN
+   */
   async signup(
     { email, password, name, phone }: SignupParams,
     userType: UserType,
@@ -65,6 +72,12 @@ export class AuthService {
     return this.generateJWT(name, user.id);
   }
 
+  /**
+   * SigninParams を受け取りユーザーにログインします
+   * @date 2022-03-17
+   * @param {SigninParams} SigninParams
+   * @returns {string} JSON_WEB_TOKEN
+   */
   async signin({ email, password }: SigninParams) {
     const user = await this.prismaService.user.findUnique({ where: { email } });
 
@@ -87,6 +100,13 @@ export class AuthService {
     return this.generateJWT(user.name, user.id);
   }
 
+  /**
+   * realtor と admin アカウントを作成するのに必要なプロダクトキーを生成します
+   * @date 2022-03-17
+   * @param {string} email
+   * @param {UserType} userType
+   * @returns {string} productKey
+   */
   generateProductKey(email: string, userType: UserType) {
     const string = `${email}-${userType}-${process.env.PRODUCT_KEY_SECRET}`;
     return bcrypt.hash(string, 10);
