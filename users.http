@@ -4,9 +4,9 @@ content-type: application/json
 {
   "name": "hoge",
   "phone": "000-0000-0000",
-  "email": "rui12@hoge.com",
+  "email": "rui13@hoge.com",
   "password": "123456",
-  "productKey": "$2a$10$aOofvGcdrJDGBRI.mH63EeSnnof4jpE3F142.1fpwgllTCw.UMd9C"
+  "productKey": "$2a$10$hap/PXH7HUCQkPsO5CcaNeRgkVifnZ7IfuVlJUBsNgfJom9lgTyJm"
 }
 
 ###
@@ -25,6 +25,6 @@ POST http://localhost/auth/key
 content-type: application/json
 
 {
-  "email": "rui12@hoge.com",
+  "email": "rui13@hoge.com",
   "userType": "REALTOR"
 }
