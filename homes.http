@@ -39,4 +39,5 @@ content-type: application/json
 }
 
 ### 削除
-DELETE http://localhost/home/6
+DELETE http://localhost/home/3
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiaG9nZSIsImlkIjoyLCJpYXQiOjE2NDc1MTQ4OTEsImV4cCI6MTY1MTExNDg5MX0.OFJlOu3YUzvmk-S7Beip5E2CClufDH8t0HsDKf3C8fE

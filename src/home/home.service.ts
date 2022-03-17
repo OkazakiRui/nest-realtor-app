@@ -157,4 +157,24 @@ export class HomeService {
     await this.prismaService.image.deleteMany({ where: { home_id: id } });
     await this.prismaService.home.delete({ where: { id } });
   }
+
+  async getRealtorByHomeId(id: number) {
+    // homeに結びつくrealtorからユーザー情報を取得する
+    const home = await this.prismaService.home.findUnique({
+      where: { id },
+      select: {
+        realtor: {
+          select: {
+            name: true,
+            id: true,
+            email: true,
+            phone: true,
+          },
+        },
+      },
+    });
+
+    if (!home) throw new NotFoundException();
+    return home.realtor;
+  }
 }
