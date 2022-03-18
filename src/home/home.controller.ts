@@ -89,7 +89,7 @@ export class HomeController {
   }
 
   @Roles(UserType.BUYER)
-  @Post('/inquire/:id')
+  @Post('/:id/inquire')
   inquire(
     @Param('id', ParseIntPipe) homeId: number,
     @User() user: UserPayload,
