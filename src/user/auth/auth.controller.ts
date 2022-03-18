@@ -47,7 +47,6 @@ export class AuthController {
   }
 
   @Roles(UserType.ADMIN)
-  @UseGuards(AuthGuard)
   @Post('/key')
   generateProductKey(@Body() { userType, email }: GenerateProductKeyDto) {
     return this.authService.generateProductKey(email, userType);

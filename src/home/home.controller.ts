@@ -53,14 +53,12 @@ export class HomeController {
   }
 
   @Roles(UserType.REALTOR)
-  @UseGuards(AuthGuard)
   @Post()
   createHome(@Body() body: CreateHomeDto, @User() user: UserPayload) {
     return this.homeService.createHome(body, user.id);
   }
 
   @Roles(UserType.REALTOR)
-  @UseGuards(AuthGuard)
   @Put('/:id')
   async updateHome(
     @Param('id', ParseIntPipe) id: number,
@@ -74,7 +72,6 @@ export class HomeController {
   }
 
   @Roles(UserType.REALTOR)
-  @UseGuards(AuthGuard)
   @Delete('/:id')
   async deleteHome(
     @Param('id', ParseIntPipe) id: number,
