@@ -15,12 +15,10 @@ import {
   Put,
   Query,
   UnauthorizedException,
-  UseGuards,
 } from '@nestjs/common';
 import { HomeService } from './home.service';
 import { PropertyType, UserType } from '@prisma/client';
 import { User, UserPayload } from 'src/user/decorator/user.decorator';
-import { AuthGuard } from 'src/guards/auth.guard';
 import { Roles } from 'src/decorator/roles.decorator';
 
 @Controller('home')
