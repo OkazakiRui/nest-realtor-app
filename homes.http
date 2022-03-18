@@ -41,3 +41,12 @@ content-type: application/json
 ### 削除
 DELETE http://localhost/home/3
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiaG9nZSIsImlkIjoyLCJpYXQiOjE2NDc1MTQ4OTEsImV4cCI6MTY1MTExNDg5MX0.OFJlOu3YUzvmk-S7Beip5E2CClufDH8t0HsDKf3C8fE
+
+### お問い合わせ
+POST http://localhost/home/inquire/1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoib2themFraSIsImlkIjozLCJpYXQiOjE2NDc1NzMzNjcsImV4cCI6MTY1MTE3MzM2N30.IpXvituAkE5-QT_hPVxza8tMVSurIZuX2cIjWmEdda0
+
+{
+  "message": "hello world"
+}

@@ -1,6 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { PropertyType } from '@prisma/client';
 import { PrismaService } from 'src/prisma/prisma.service';
+import { UserPayload } from 'src/user/decorator/user.decorator';
 import { HomeResponseDto } from './dto/home.dto';
 
 type GetHomesParam = {
@@ -214,5 +215,25 @@ export class HomeService {
 
     if (!home) throw new NotFoundException();
     return home.realtor;
+  }
+
+  /**
+   * buyerが物件にメッセージを追加することが出来ます
+   * @date 2022-03-18
+   * @param {number} homeId
+   * @param {UserPayload}  buyer
+   * @param {string}  message
+   * @returns {object}
+   */
+  async inquire(homeId: number, buyer: UserPayload, message: string) {
+    const realtor = await this.getRealtorByHomeId(homeId);
+    return this.prismaService.message.create({
+      data: {
+        realtor_id: realtor.id,
+        buyer_id: buyer.id,
+        home_id: homeId,
+        message,
+      },
+    });
   }
 }

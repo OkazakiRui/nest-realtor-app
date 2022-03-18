@@ -1,4 +1,9 @@
-import { HomeResponseDto, CreateHomeDto, UpdateHomeDto } from './dto/home.dto';
+import {
+  HomeResponseDto,
+  CreateHomeDto,
+  UpdateHomeDto,
+  InquireDto,
+} from './dto/home.dto';
 import {
   Body,
   Controller,
@@ -81,5 +86,15 @@ export class HomeController {
     if (realtor.id !== user.id) throw new UnauthorizedException();
 
     return this.homeService.deleteHomeById(id);
+  }
+
+  @Roles(UserType.BUYER)
+  @Post('/inquire/:id')
+  inquire(
+    @Param('id', ParseIntPipe) homeId: number,
+    @User() user: UserPayload,
+    @Body() { message }: InquireDto,
+  ) {
+    return this.homeService.inquire(homeId, user, message);
   }
 }
