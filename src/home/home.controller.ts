@@ -56,8 +56,7 @@ export class HomeController {
   @UseGuards(AuthGuard)
   @Post()
   createHome(@Body() body: CreateHomeDto, @User() user: UserPayload) {
-    return 'hoge';
-    // return this.homeService.createHome(body, user.id);
+    return this.homeService.createHome(body, user.id);
   }
 
   @Put('/:id')

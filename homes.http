@@ -10,7 +10,7 @@ GET http://localhost/home/1
 ### 登録
 POST http://localhost/home
 content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiaG9nZSIsImlkIjoyLCJpYXQiOjE2NDc1MTQ4OTEsImV4cCI6MTY1MTExNDg5MX0.OFJlOu3YUzvmk-S7Beip5E2CClufDH8t0HsDKf3C8fE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoib2themFraSIsImlkIjozLCJpYXQiOjE2NDc1NzMzNjcsImV4cCI6MTY1MTE3MzM2N30.IpXvituAkE5-QT_hPVxza8tMVSurIZuX2cIjWmEdda0
 
 {
   "address": "piyopiyo 132",
