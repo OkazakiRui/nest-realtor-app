@@ -1,14 +1,14 @@
 ### 全件取得
-GET http://localhost/home
+GET http://localhost:3000/home
 
 ### 条件付き検索
-GET http://localhost/home?city=沖縄県&minPrice=1000&maxPrice=100000&propertyType=RESIDENTIAL
+GET http://localhost:3000/home?city=沖縄県&minPrice=1000&maxPrice=100000&propertyType=RESIDENTIAL
 
 ### 1件取得
-GET http://localhost/home/1
+GET http://localhost:3000/home/1
 
 ### 登録
-POST http://localhost/home
+POST http://localhost:3000/home
 content-type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiaG9nZSIsImlkIjoyLCJpYXQiOjE2NDc1MTQ4OTEsImV4cCI6MTY1MTExNDg5MX0.OFJlOu3YUzvmk-S7Beip5E2CClufDH8t0HsDKf3C8fE
 
@@ -31,7 +31,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiaG9nZSIsI
 }
 
 ### 更新
-PUT http://localhost/home/6
+PUT http://localhost:3000/home/6
 content-type: application/json
 
 {
@@ -39,11 +39,11 @@ content-type: application/json
 }
 
 ### 削除
-DELETE http://localhost/home/3
+DELETE http://localhost:3000/home/3
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiaG9nZSIsImlkIjoyLCJpYXQiOjE2NDc1MTQ4OTEsImV4cCI6MTY1MTExNDg5MX0.OFJlOu3YUzvmk-S7Beip5E2CClufDH8t0HsDKf3C8fE
 
 ### お問い合わせ
-POST http://localhost/home/8/inquire
+POST http://localhost:3000/home/8/inquire
 content-type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoib2themFraSIsImlkIjozLCJpYXQiOjE2NDc1NzMzNjcsImV4cCI6MTY1MTE3MzM2N30.IpXvituAkE5-QT_hPVxza8tMVSurIZuX2cIjWmEdda0
 
@@ -52,5 +52,5 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoib2themFra
 }
 
 ### メッセージを取得
-GET http://localhost/home/8/messages
+GET http://localhost:3000/home/8/messages
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiaG9nZSIsImlkIjoyLCJpYXQiOjE2NDc1MTQ4OTEsImV4cCI6MTY1MTExNDg5MX0.OFJlOu3YUzvmk-S7Beip5E2CClufDH8t0HsDKf3C8fE

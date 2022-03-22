@@ -39,28 +39,14 @@ propertyType = 住宅のタイプ (`RESIDENTIAL` | `CONDO`)
 ## Installation
 
 ```bash
-yarn
+cp .env.example .env
 ```
 
 ```bash
-vi .env
+docker-compose up
 ```
-
-```.env
-DATABASE_URL=""
-JSON_TOKEN_KEY="適当に入力してください"
-PRODUCT_KEY_SECRET="適当に入力してください"
-```
-
-## Running the app
 
 ```bash
-# development
-yarn start
-
-# watch mode
-yarn start:dev
-
-# open prisma studio
-yarn prisma
+docker container exec -it nest bash
+npx prisma db push
 ```

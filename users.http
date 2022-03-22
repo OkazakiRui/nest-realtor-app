@@ -1,4 +1,4 @@
-POST http://localhost/auth/signup/BUYER
+POST http://localhost:3000/auth/signup/BUYER
 content-type: application/json
 
 {
@@ -11,7 +11,7 @@ content-type: application/json
 
 ###
 
-POST http://localhost/auth/signin
+POST http://localhost:3000/auth/signin
 content-type: application/json
 
 {
@@ -21,7 +21,7 @@ content-type: application/json
 
 ###
 
-POST http://localhost/auth/key
+POST http://localhost:3000/auth/key
 content-type: application/json
 
 {
@@ -31,5 +31,5 @@ content-type: application/json
 
 ###
 
-Get http://localhost/auth/me
+Get http://localhost:3000/auth/me
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiaG9nZSIsImlkIjoyLCJpYXQiOjE2NDc1MTQ4OTEsImV4cCI6MTY1MTExNDg5MX0.OFJlOu3YUzvmk-S7Beip5E2CClufDH8t0HsDKf3C8fE
